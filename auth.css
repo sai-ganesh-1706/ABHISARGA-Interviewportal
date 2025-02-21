@@ -1,0 +1,17 @@
+.auth-card {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.auth-card h2 {
+    font-weight: bold;
+}
+
+.btn {
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
