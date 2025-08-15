@@ -83,3 +83,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+
+
+
+document.querySelector('.login-btn').addEventListener('click', async function(event) {
+    event.preventDefault(); // Prevent default behavior
+
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        credentials: 'include', // Important if using cookies
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: "user@example.com", // Replace with actual user input
+            password: "password123"    // Replace with actual user input
+        })
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem('token', data.token); // Save JWT token
+        window.location.href = 'dashboard.html';  // Redirect to dashboard
+    } else {
+        alert('Login failed! Check your credentials.');
+    }
+});
+
